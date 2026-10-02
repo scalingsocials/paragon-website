@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paragon Metal Industries</title>
+<meta name="description" content="Paragon Metal Industries, Moradabad. Manufacturer and exporter of brass home décor, lighting and interior accessories since 1981.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: floating pill nav over a dark hero, then cream sections alternating with
+   a peach craft band and an oxblood-brown footer. Wide 1240px frame, 16px+ gutters. */
+:root{
+  --cream:#F8F1E7;      /* page ground */
+  --paper:#FFFBF5;      /* card ground */
+  --peach:#F6E0C4;      /* craft band */
+  --ink:#2F2321;        /* text + dark sections */
+  --cocoa:#443232;      /* secondary text */
+  --oxblood:#792317;    /* accent: nav, buttons */
+  --oxblood-deep:#4F1F17;
+  --brass:#A9813F;      /* small metal details */
+  --line:rgba(68,50,50,.18);
+  --muted:rgba(68,50,50,.72);
+
+  --display:"Cormorant","Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --body:"Onest",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+
+  --frame:1240px;
+  --gutter:clamp(16px,4vw,48px);
+  --radius:999px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.frame{max-width:var(--frame);margin-inline:auto;padding-inline:var(--gutter)}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.02;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:var(--oxblood);display:flex;align-items:center;gap:10px;margin:0 0 18px}
+.eyebrow::before{content:"";width:8px;height:8px;background:var(--brass);transform:rotate(45deg)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:var(--radius);font:500 14px/1 var(--body);letter-spacing:.02em;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.btn-primary{background:var(--oxblood);color:var(--cream)}
+.btn-primary:hover{background:var(--oxblood-deep)}
+.btn-ghost{border-color:currentColor;background:transparent}
+.btn-ghost:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.btn svg{width:14px;height:14px}
+
+/* ---------- Nav ---------- */
+.nav-wrap{position:fixed;inset:0 0 auto 0;z-index:50;padding:calc(14px + env(safe-area-inset-top,0px)) var(--gutter) 0}
+.nav{max-width:var(--frame);margin-inline:auto;background:var(--oxblood-deep);color:var(--cream);border-radius:var(--radius);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 12px 10px 26px;box-shadow:0 10px 30px -12px rgba(47,35,33,.45)}
+.nav .logo img{height:34px;width:auto}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:4px}
+.nav ul a{display:block;padding:9px 14px;border-radius:var(--radius);text-decoration:none;font-size:14px;letter-spacing:.02em;opacity:.88;transition:background .2s,opacity .2s}
+.nav ul a:hover{background:rgba(248,241,231,.1);opacity:1}
+.nav .btn{background:var(--cream);color:var(--ink);padding:11px 20px}
+.nav .btn:hover{background:var(--peach)}
+.menu-btn{display:none;background:none;border:0;color:var(--cream);padding:8px;cursor:pointer}
+.menu-btn svg{width:26px;height:26px}
+@media (max-width:900px){
+  .nav ul,.nav .nav-cta{display:none}
+  .menu-btn{display:block}
+  .nav.open{border-radius:28px;flex-wrap:wrap}
+  .nav.open ul{display:flex;flex-direction:column;width:100%;padding:8px 0 10px}
+  .nav.open ul a{font-size:17px;padding:12px 14px}
+}
+
+/* ---------- Hero ---------- */
+.hero{background:var(--ink);color:var(--cream);padding-block:140px 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 78% 40%,rgba(169,129,63,.28),transparent 70%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,5vw,72px);align-items:end;position:relative;z-index:1}
+.hero h1{font-size:clamp(50px,7.6vw,112px);font-weight:400}
+.hero h1 em{font-style:italic;color:#E7C99A}
+.hero-lede{max-width:430px;color:rgba(248,241,231,.8);margin:28px 0 32px;font-size:17px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero-collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:14px}
+.tile{background:var(--paper);border-radius:20px;overflow:hidden;position:relative}
+.tile img{width:100%;height:100%;object-fit:cover}
+.hero-collage .t1{grid-row:span 2;aspect-ratio:3/4.4;border-radius:200px 200px 20px 20px}
+.hero-collage .t2,.hero-collage .t3{aspect-ratio:1/1}
+.tile .tag{position:absolute;left:12px;bottom:12px;background:rgba(47,35,33,.82);color:var(--cream);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;border-radius:var(--radius)}
+.hero-foot{display:flex;flex-wrap:wrap;gap:12px 40px;margin-top:56px;padding-top:24px;border-top:1px solid rgba(248,241,231,.16);position:relative;z-index:1;font-size:13px;letter-spacing:.06em;color:rgba(248,241,231,.7)}
+.hero-foot b{font-family:var(--display);font-size:30px;font-weight:500;color:var(--cream);display:block;letter-spacing:0;line-height:1.1}
+@media (max-width:900px){
+  .hero{padding-top:120px}
+  .hero-grid{grid-template-columns:1fr}
+}
+
+/* ---------- Marquee ---------- */
+.marquee{background:var(--oxblood);color:var(--cream);overflow:hidden;white-space:nowrap;padding-block:16px}
+.marquee-track{display:inline-flex;gap:44px;animation:slide 38s linear infinite;font-family:var(--display);font-size:24px;font-style:italic}
+.marquee-track span{display:inline-flex;align-items:center;gap:44px}
+.marquee-track span::after{content:"";width:7px;height:7px;background:#E7C99A;transform:rotate(45deg)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- Sections ---------- */
+section{scroll-margin-top:96px}
+.sec{padding-block:clamp(72px,10vw,128px)}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.sec-head h2{font-size:clamp(40px,5.6vw,76px)}
+.sec-head p{max-width:440px;color:var(--muted);margin:0}
+
+/* Saga */
+.saga{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,6vw,96px);align-items:start}
+.saga h2{font-size:clamp(40px,5.6vw,76px)}
+.saga h2 em{font-style:italic;color:var(--oxblood)}
+.saga-figure{margin-top:36px;border-radius:20px;overflow:hidden;background:var(--paper);aspect-ratio:4/3.4}
+.saga-figure img{width:100%;height:100%;object-fit:cover}
+.saga-copy{min-width:0}
+.saga-copy p{margin:0 0 20px;max-width:62ch;color:var(--cocoa)}
+.saga-copy p:first-child{font-family:var(--display);font-size:clamp(24px,2.4vw,30px);line-height:1.3;color:var(--ink)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;border-top:1px solid var(--line)}
+.facts div{padding:22px 18px 0 0}
+.facts div+div{padding-left:18px;border-left:1px solid var(--line)}
+.facts b{display:block;font-family:var(--display);font-weight:500;font-size:clamp(34px,3.6vw,48px);line-height:1;color:var(--oxblood);font-variant-numeric:tabular-nums}
+.facts span{font-size:13px;color:var(--muted)}
+@media (max-width:900px){.saga{grid-template-columns:1fr}}
+@media (max-width:520px){.facts{grid-template-columns:1fr}.facts div+div{border-left:0;padding-left:0;border-top:1px solid var(--line);margin-top:18px}}
+
+/* Collections */
+.collections{background:var(--paper);border-block:1px solid var(--line)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.filters button{font:500 14px/1 var(--body);padding:11px 18px;border-radius:var(--radius);border:1px solid var(--line);background:transparent;color:var(--cocoa);cursor:pointer;transition:all .2s}
+.filters button:hover{border-color:var(--cocoa)}
+.filters button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.filters .count{opacity:.6;margin-left:6px;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 20px}
+@media (max-width:1060px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:760px){.grid{grid-template-columns:repeat(2,1fr);gap:22px 12px}}
+.card{display:flex;flex-direction:column;min-width:0}
+.card-img{position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:var(--cream)}
+.card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s,transform .8s}
+.card-img img.alt{opacity:0}
+.card:hover .card-img img.alt{opacity:1}
+.card:hover .card-img img{transform:scale(1.03)}
+.card-body{padding-top:14px;display:flex;flex-direction:column;gap:4px}
+.card-sku{font-size:11px;letter-spacing:.14em;color:var(--brass);font-weight:500;font-variant-numeric:tabular-nums}
+.card h3{font-size:22px;line-height:1.15;font-weight:500}
+.card-cat{font-size:13px;color:var(--muted)}
+.card a.enq{margin-top:8px;font-size:13px;font-weight:500;color:var(--oxblood);text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+.card a.enq:hover{text-decoration:underline;text-underline-offset:3px}
+.card[hidden]{display:none}
+.grid-note{margin-top:40px;font-size:14px;color:var(--muted)}
+
+/* Craft band */
+.craft{background:var(--peach)}
+.craft-top{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:end;margin-bottom:56px}
+.craft-top h2{font-size:clamp(40px,5.6vw,76px)}
+.craft-top p{margin:0 0 16px;color:var(--cocoa);max-width:60ch}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:s}
+.steps li{background:var(--cream);border-radius:18px;padding:22px 20px 24px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.steps li::before{counter-increment:s;content:"0" counter(s);font-family:var(--display);font-size:38px;line-height:1;color:var(--oxblood)}
+.steps b{font-weight:600;font-size:15px}
+.steps span{font-size:14px;color:var(--muted);line-height:1.5}
+.craft-quote{margin-top:56px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.craft-quote .tile{width:200px;aspect-ratio:1;border-radius:50%}
+.craft-quote p{font-family:var(--display);font-size:clamp(24px,2.6vw,34px);line-height:1.28;margin:0;max-width:30ch}
+@media (max-width:1000px){.steps{grid-template-columns:repeat(2,1fr)}.steps li:last-child{grid-column:span 2}}
+@media (max-width:900px){.craft-top{grid-template-columns:1fr}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}.steps li:last-child{grid-column:auto}.craft-quote{grid-template-columns:1fr}.craft-quote .tile{width:140px}}
+
+/* Drive */
+.drive{background:var(--ink);color:var(--cream)}
+.drive-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:center}
+.drive .eyebrow{color:#E7C99A}
+.drive h2{font-size:clamp(40px,5.6vw,76px)}
+.drive h2 em{font-style:italic;color:#E7C99A}
+.drive p{color:rgba(248,241,231,.78);max-width:58ch;margin:0 0 18px}
+.drive .lead{font-family:var(--display);font-size:clamp(24px,2.4vw,30px);line-height:1.3;color:var(--cream)}
+.drive-pics{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.drive-pics .tile{aspect-ratio:3/4}
+.drive-pics .tile:first-child{border-radius:200px 200px 20px 20px;margin-top:48px}
+.sign{display:flex;align-items:center;gap:14px;margin-top:28px;font-size:14px;color:rgba(248,241,231,.7)}
+.sign b{font-family:var(--display);font-size:28px;font-weight:500;font-style:italic;color:var(--cream)}
+@media (max-width:900px){.drive-grid{grid-template-columns:1fr}}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(32px,6vw,80px);align-items:start}
+.contact h2{font-size:clamp(40px,5.6vw,76px)}
+.contact-intro{color:var(--muted);max-width:44ch;margin:18px 0 36px}
+.places{display:grid;gap:0;border-top:1px solid var(--line)}
+.place{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+.place h3{font-family:var(--body);font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--oxblood);padding-top:4px}
+.place p{margin:0;color:var(--cocoa);line-height:1.6}
+.place a{text-decoration:none;border-bottom:1px solid var(--line)}
+.place a:hover{border-color:var(--oxblood)}
+.form{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,3.4vw,40px);display:grid;gap:16px;min-width:0}
+.form h3{font-size:34px;margin-bottom:4px}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:grid;gap:6px;min-width:0}
+.field label{font-size:13px;font-weight:500;color:var(--cocoa)}
+.field input,.field select,.field textarea{font:400 15px/1.4 var(--body);color:var(--ink);background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:13px 14px;width:100%}
+.field textarea{min-height:120px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--oxblood);box-shadow:0 0 0 3px rgba(121,35,23,.12)}
+.form .btn{justify-self:start}
+.form-msg{font-size:14px;color:var(--oxblood);min-height:1.2em;margin:0}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
+@media (max-width:520px){.form .row{grid-template-columns:1fr}.place{grid-template-columns:1fr;gap:4px}}
+
+/* Footer */
+footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc(28px + env(safe-area-inset-bottom,0px))}
+.foot-top{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(248,241,231,.16)}
+.foot-top img{width:min(520px,100%);height:auto}
+.foot-top p{margin:0;max-width:340px;color:rgba(248,241,231,.72);font-size:14px}
+.foot-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:24px;font-size:13px;color:rgba(248,241,231,.62)}
+.foot-bot nav{display:flex;gap:20px;flex-wrap:wrap}
+.foot-bot a{text-decoration:none}
+.foot-bot a:hover{color:var(--cream)}
+
+/* Reveal: visible at rest, gentle lift when JS marks it */
+.reveal{transition:transform .9s cubic-bezier(.2,.7,.2,1),opacity .9s}
+.js .reveal.pre{transform:translateY(22px)}
+</style>
+</head>
+<body>
+
+<div class="nav-wrap">
+  <nav class="nav" id="nav" aria-label="Main">
+    <a href="#top" class="logo" aria-label="Paragon home"><img src="logo-cream.png" alt="Paragon" width="440" height="155"></a>
+    <ul>
+      <li><a href="#saga">Our Saga</a></li>
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="#craft">Craft</a></li>
+      <li><a href="#drive">Our Drive</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+    <a href="#connect" class="btn nav-cta">Trade enquiry</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+    </button>
+  </nav>
+</div>
+
+<header class="hero" id="top">
+  <div class="frame">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow" style="color:#E7C99A">Moradabad · Since 1981</p>
+        <h1>Metal, shaped <em>by hand</em> for homes the world over</h1>
+        <p class="hero-lede">Paragon Metal Industries manufactures and exports home décor, lighting and interior accessories, where four decades of Moradabad brass craft meet contemporary design.</p>
+        <div class="hero-actions">
+          <a href="#collections" class="btn btn-primary">Explore collections
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a href="#connect" class="btn btn-ghost">Request a catalogue</a>
+        </div>
+      </div>
+      <div class="hero-collage">
+        <div class="tile t1"><img src="https://cdn.shopify.com/s/files/1/0777/8733/2779/files/NAM-00787_1.png?v=1784701391&width=900" alt="Marble pillar lamp with brass detailing"><span class="tag">Lighting</span></div>
+        <div class="tile t2"><img src="https://cdn.shopify.com/s/files/1/0777/8733/2779/files/NAM-00821_3_35427f48-5025-4ed3-aedf-1d8524b43c00.png?v=1784698360&width=700" alt="Four-horse rectangular tray"><span class="tag">Trays</span></div>
+        <div class="tile t3"><img src="https://cdn.shopify.com/s/files/1/0777/8733/2779/files/NAM-00522_2_a5ccc836-9fcc-47e2-bb39-53e5a4ddce77.png?v=1784703184&width=700" alt="Palm candle holder on white marble base"><span class="tag">Candle holders</span></div>
+      </div>
+    </div>
+    <div class="hero-foot">
+      <div><b>1981</b>Founded in Moradabad</div>
+      <div><b>3</b>Office, factory &amp; showroom</div>
+      <div><b>Export</b>Home décor, lighting, accessories</div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Brass handicrafts</span><span>Table &amp; floor lamps</span><span>Candle holders</span><span>Trays &amp; bookends</span><span>Interior accessories</span><span>Made in Moradabad</span>
+    <span>Brass handicrafts</span><span>Table &amp; floor lamps</span><span>Candle holders</span><span>Trays &amp; bookends</span><span>Interior accessories</span><span>Made in Moradabad</span>
+  </div>
+</div>
+
+<main>
+<section id="saga" class="sec">
+  <div class="frame saga">
+    <div class="reveal">
+      <p class="eyebrow">Our Saga</p>
+      <h2>Four decades of <em>craft</em>, one careful piece at a time</h2>
+      <div class="saga-figure"><img src="https://cdn.shopify.com/s/files/1/0777/8733/2779/files/8782dd5f-8e77-403f-a30c-606b657cfe60.png?v=1782378299&width=1000" alt="Five-light candle stand with clear glass and brass rings"></div>
+    </div>
+    <div class="saga-copy reveal">
+      <p>Founded in 1981, Paragon Metal Industries began with a team of skilled artisans and a shared passion for bringing Indian craftsmanship to the world.</p>
+      <p>From our roots in brass handicrafts, we have grown into a manufacturer and exporter of home décor, lighting and interior accessories. Our collections bring together traditional skills and contemporary design, with thoughtful attention to materials, finishes and the smallest details.</p>
+      <p>Over four decades, our journey has been shaped by the dedication of our people and the trust of our clients. A commitment to quality, careful packaging and timely delivery remains at the heart of every relationship we build.</p>
+      <p>Today, we continue to create with the same care and conviction that inspired our beginnings, honouring our craft while evolving with the homes and lifestyles of a changing world.</p>
+      <div class="facts">
+        <div><b>1981</b><span>Year our workshop opened</span></div>
+        <div><b>40+</b><span>Years of brass craft</span></div>
+        <div><b>3</b><span>Product families: décor, lighting, accessories</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="collections" class="sec collections">
+  <div class="frame">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Collections</p>
+        <h2>Selected pieces</h2>
+      </div>
+      <p>A selection from our current range. Every piece is available for trade and export orders, with finishes and sizes adapted to your brief.</p>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Filter by category"></div>
+    <div class="grid" id="grid"></div>
+    <p class="grid-note">Looking for something specific? Share a reference or sketch and our team will come back with options.</p>
+  </div>
+</section>
+
+<section id="craft" class="sec craft">
+  <div class="frame">
+    <div class="craft-top">
+      <div>
+        <p class="eyebrow">Rooted in Moradabad. Crafted by Paragon.</p>
+        <h2>Where metal becomes beauty and purpose</h2>
+      </div>
+      <div>
+        <p>Since 1981, Paragon’s story has been closely woven with the craft traditions of Moradabad. This heritage shapes who we are: the materials we work with, the skills we value and the care we bring to every collection.</p>
+        <p>Behind our pieces are skilled artisans whose knowledge and experience turn metal into objects of beauty and purpose. Their hands shape the forms, refine the textures and bring out the details that give Paragon’s creations their distinctive character.</p>
+      </div>
+    </div>
+    <ol class="steps">
+      <li><b>Selecting materials</b><span>Metals and accents chosen for how they will age, feel and finish.</span></li>
+      <li><b>Shaping</b><span>Artisans form each piece by hand, refining texture and line.</span></li>
+      <li><b>Assembling</b><span>Components come together with attention to balance and function.</span></li>
+      <li><b>Finishing</b><span>Polish, patina and plating bring out each piece’s character.</span></li>
+      <li><b>Careful packing</b><span>Packed to arrive as it left our floor, wherever it is headed.</span></li>
+    </ol>
+    <div class="craft-quote">
+      <div class="tile"><img src="https://cdn.shopify.com/s/files/1/0777/8733/2779/files/NAM-00463_2.png?v=1784702290&width=500" alt="Twig table lamp detail"></div>
+      <p>“Quality is a responsibility shared at every stage, with equal care for the details our clients see and those they may never notice.”</p>
+    </div>
+  </div>
+</section>
+
+<section id="drive" class="sec drive">
+  <div class="frame drive-grid">
+    <div class="drive-pics">
+      <div class="tile"><img src="https://cdn.shopify.com/s/files/1/0777/8733/2779/files/NAM-00617_8.png?v=1782378482&width=700" alt="Two-leaf brass floor lamp"></div>
+      <div class="tile"><img src="https://cdn.shopify.com/s/files/1/0777/8733/2779/files/NAM-00798.png?v=1784702533&width=700" alt="Leopard bookend on black marble glass"></div>
+    </div>
+    <div>
+      <p class="eyebrow">Our Drive</p>
+      <h2>Built on craft and <em>lasting</em> relationships</h2>
+      <p class="lead" style="margin-top:28px">At the heart of Paragon is a lasting passion for craftsmanship and the relationships built along the way.</p>
+      <p>Jimmy has been a driving force behind this journey, helping shape Paragon’s presence in the global market. His dedication, together with the skill and commitment of our team, continues to guide our work across home décor, lighting and interior accessories.</p>
+      <p>Since our beginnings in the 1980s, every challenge has taught us something valuable, encouraging us to refine our craft, embrace fresh ideas and better understand our clients’ needs.</p>
+      <p>The trust of our clients inspires us to keep moving forward: to create thoughtfully, deliver consistently and build partnerships that endure.</p>
+      <div class="sign"><b>Jimmy</b> Paragon Metal Industries</div>
+    </div>
+  </div>
+</section>
+
+<section id="connect" class="sec contact">
+  <div class="frame contact-grid">
+    <div>
+      <p class="eyebrow">Connect with Paragon</p>
+      <h2>Let’s create something together</h2>
+      <p class="contact-intro">For product enquiries, collection previews and business partnerships, we would be delighted to hear from you.</p>
+      <div class="places">
+        <div class="place"><h3>Office</h3><p>3/C-140, Budhi Vihar, Avas Vikas Colony, Majhola<br>Delhi Road, Moradabad 244001<br>Uttar Pradesh, India</p></div>
+        <div class="place"><h3>Factory</h3><p>Lakri Fazalpur, Mini Bypass Road<br>Moradabad 244001, Uttar Pradesh, India</p></div>
+        <div class="place"><h3>Showroom</h3><p>A 06/02–06, India Expo Centre &amp; Mart<br>Greater Noida, Uttar Pradesh, India</p></div>
+        <div class="place"><h3>Phone</h3><p><a href="tel:+915912484619">+91 591 2484619</a> / 3294584 / 3205907<br>Fax +91 591 2484618</p></div>
+        <div class="place"><h3>Email</h3><p><a href="mailto:jimmy@paragonmetal.com">jimmy@paragonmetal.com</a><br>www.paragonmetal.com</p></div>
+      </div>
+    </div>
+    <form class="form" id="enquiry" novalidate>
+      <h3>Send an enquiry</h3>
+      <div class="row">
+        <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" autocomplete="organization"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="f-country">Country</label><input id="f-country" name="country" autocomplete="country-name"></div>
+      </div>
+      <div class="field"><label for="f-topic">I’m interested in</label>
+        <select id="f-topic" name="topic">
+          <option>Product enquiry</option>
+          <option>Collection preview / catalogue</option>
+          <option>Business partnership</option>
+          <option>Showroom visit</option>
+        </select>
+      </div>
+      <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="message" placeholder="Products, quantities, finishes or timelines you have in mind"></textarea></div>
+      <button class="btn btn-primary" type="submit">Send enquiry
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+      <p class="form-msg" id="formMsg" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="frame">
+    <div class="foot-top">
+      <img src="logo-full-cream.png" alt="Paragon Metal Industries" width="900" height="152">
+      <p>Manufacturer and exporter of home décor, lighting and interior accessories. Moradabad, Uttar Pradesh, since 1981.</p>
+    </div>
+    <div class="foot-bot">
+      <span>© <span id="yr">2026</span> Paragon Metal Industries. All rights reserved.</span>
+      <nav aria-label="Footer"><a href="#saga">Our Saga</a><a href="#collections">Collections</a><a href="#craft">Craft</a><a href="#connect">Connect</a></nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+const CDN='https://cdn.shopify.com/s/files/1/0777/8733/2779/files/';
+const W='&width=700';
+const products=[
+  ['Marble Pillar Lamp','NAM-00787','Lighting','NAM-00787_1.png?v=1784701391','NAM-00787_2.png?v=1784701390'],
+  ['Gold Table Lamp, Black Shade','NAM-00782','Lighting','NAM-00782_2_a24f69f0-2e29-47ff-bc1a-7ebc39da00f1.png?v=1784974748','NAM-00782_3_e29d7051-9ee0-403e-a73d-4932832c64a2.png?v=1784974748'],
+  ['Palm Tree Table Lamp','NAM-00473','Lighting','8a919cf3-2b12-4393-b814-da025c9bf110.png?v=1782379003','NAM-00473_8.png?v=1782378847'],
+  ['Camel Table Lamp, Round Shade','NAM-00471','Lighting','f6cd6f67-84b0-472c-a6db-377dc8615c5c.png?v=1782379039','NAM-00471_7.png?v=1782378887'],
+  ['Floor Lamp, Off-White Shade','NAM-00818','Lighting','NAM-00818-1_3.png?v=1784701330','NAM-00818-1_2.png?v=1784701331'],
+  ['Hammered Base Lamp','NAM-01077','Lighting','Picture14_1aec363a-2779-415b-94b4-eb508bb3757a.png?v=1783580672','NAM-01077.png?v=1784610791'],
+  ['Royal Red Lamp','NAM-01080','Lighting','Picture16.png?v=1783576552','NAM-01080.png?v=1784610641'],
+  ['Twig Table Lamp','NAM-00463','Lighting','NAM-00463_2.png?v=1784702290','NAM-00463_4.png?v=1784702290'],
+  ['Palm Hanging Lamp with Chain','NAM-00486','Lighting','f1f7e943-f3c6-4508-b18d-8308d10a02ef.png?v=1782378733','3f0b6731-6ff6-4805-9e83-f5e28cdcfa43.png?v=1782378733'],
+  ['Hanging Lamp, Large','NAM-00593','Lighting','d584c750-83e6-4553-8459-96250d0486f8.png?v=1782378679','99d8e3ab-4e0f-4058-b989-973b9faae4dc.png?v=1782378678'],
+  ['Study Lamp','NAM-00781','Lighting','335be2ad-0a0a-43fb-8dd4-37912833cb23.png?v=1782378552','1649c9be-b403-4215-a0db-2373a9d83142.png?v=1782378429'],
+  ['Green Ribbed Lamp','NAM-01082','Lighting','Picture4.png?v=1783576529','NAM-01082.png?v=1784610391'],
+  ['5-Light Candle Stand','NAM-00503','Candle holders','8782dd5f-8e77-403f-a30c-606b657cfe60.png?v=1782378299','d2e9dc3d-33d9-4375-8448-9433c0b0dfc9.png?v=1782378231'],
+  ['Palm Candle Holder, Marble Base','NAM-00522','Candle holders','NAM-00522_2_a5ccc836-9fcc-47e2-bb39-53e5a4ddce77.png?v=1784703184','NAM-00522_3_a38df04d-b7ba-41e3-8bd5-11feab5c3a0e.png?v=1784703183'],
+  ['Candle Holder with Glass & Ring','NAM-00638','Candle holders','e02437a7-9e11-49ba-851e-6e7bd7c1c78e.png?v=1782377814','NAM-00638_10.jpg?v=1782377730'],
+  ['Four-Horse Rectangular Tray','NAM-00821','Décor & trays','NAM-00821_3_35427f48-5025-4ed3-aedf-1d8524b43c00.png?v=1784698360','NAM-00821_2_4c67f00c-d0ee-45b1-aaba-9855d4501bba.png?v=1784698360'],
+  ['Oval Mirror Tray, Large','NAM-00553','Décor & trays','NAM-00553.png?v=1784699689','b69f6dfc-4937-4022-910f-031956358c0c.png?v=1782376221'],
+  ['Leopard Bookend, Black Marble Glass','NAM-00798','Décor & trays','144270aa-0db4-4b26-8362-6b5c28e42011.png?v=1782379248','NAM-00798.png?v=1784702533'],
+  ['Bookend on Glass Base','NAM-00799','Décor & trays','0e86378d-ebec-4031-97a4-a38cff68005d.png?v=1782379237','NAM-00799.png?v=1784702498'],
+  ['3-Tier Rack','NAM-00772','Décor & trays','Namak20214806.jpg?v=1782375825','Namak20214776.jpg?v=1782375825'],
+  ['Garland','NAM-01027','Décor & trays','ccfe80eb-db7d-4eba-9c12-b351ccbb02a2.png?v=1782373870','NAM-01027.png?v=1784610864'],
+  ['Organic Photo Frame','NAM-00783','Frames & clocks','4c3c2eca-08ea-4f62-9d4c-2f909f29badd.png?v=1782380610','f02b273d-8685-4bc9-96aa-94bbc39c097d.png?v=1782380505'],
+  ['Metal Photo Frame','NAM-00832','Frames & clocks','53841890-054d-4040-9a0e-943d836f4874.png?v=1782380570','5113de45-25cc-4a44-8366-0295c127d9b3.png?v=1782380482'],
+  ['Rectangular Table Clock with Hook','NAM-00628','Frames & clocks','5607a1e2-3487-4e55-b1fe-1d33193b33da.png?v=1782381701','NAM-00628_3.png?v=1782381522']
+];
+const grid=document.getElementById('grid');
+grid.innerHTML=products.map(([n,sku,cat,a,b])=>`
+  <article class="card" data-cat="${cat}">
+    <div class="card-img">
+      <img src="${CDN+a+W}" alt="${n}" loading="lazy">
+      <img class="alt" src="${CDN+b+W}" alt="" loading="lazy">
+    </div>
+    <div class="card-body">
+      <span class="card-sku">${sku}</span>
+      <h3>${n}</h3>
+      <span class="card-cat">${cat}</span>
+      <a class="enq" href="#connect" data-sku="${sku}" data-name="${n}">Enquire about this piece →</a>
+    </div>
+  </article>`).join('');
+
+const cats=['All',...new Set(products.map(p=>p[2]))];
+const filters=document.getElementById('filters');
+filters.innerHTML=cats.map((c,i)=>`<button type="button" aria-pressed="${i===0}" data-cat="${c}">${c}<span class="count">${c==='All'?products.length:products.filter(p=>p[2]===c).length}</span></button>`).join('');
+filters.addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  filters.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  const c=b.dataset.cat;
+  grid.querySelectorAll('.card').forEach(card=>card.hidden=!(c==='All'||card.dataset.cat===c));
+});
+
+grid.addEventListener('click',e=>{
+  const a=e.target.closest('a.enq');if(!a)return;
+  document.getElementById('f-topic').value='Product enquiry';
+  const m=document.getElementById('f-msg');
+  m.value=`I'd like details on ${a.dataset.name} (${a.dataset.sku}): sizes, finishes and MOQ.`;
+});
+
+
+/* mobile menu */
+const nav=document.getElementById('nav'),mb=document.getElementById('menuBtn');
+mb.addEventListener('click',()=>{const o=nav.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
+nav.querySelectorAll('ul a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');mb.setAttribute('aria-expanded',false)}));
+
+/* enquiry form: opens the visitor's email app with the enquiry filled in */
+document.getElementById('enquiry').addEventListener('submit',e=>{
+  e.preventDefault();
+  const f=e.target,msg=document.getElementById('formMsg');
+  if(!f['f-name'].value.trim()||!f['f-email'].checkValidity()||!f['f-email'].value){msg.textContent='Please add your name and a valid email address.';return}
+  const body=`Name: ${f['f-name'].value}\nCompany: ${f['f-company'].value}\nEmail: ${f['f-email'].value}\nCountry: ${f['f-country'].value}\n\n${f['f-msg'].value}`;
+  window.location.href=`mailto:jimmy@paragonmetal.com?subject=${encodeURIComponent(f['f-topic'].value+' – Paragon website')}&body=${encodeURIComponent(body)}`;
+  msg.textContent='Your email app should open with the enquiry ready to send. You can also write to jimmy@paragonmetal.com directly.';
+});
+
+/* gentle reveal for sections below the fold only */
+if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.remove('pre');io.unobserve(en.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>{if(el.getBoundingClientRect().top>innerHeight){el.classList.add('pre');io.observe(el)}});
+}
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
