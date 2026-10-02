@@ -145,7 +145,7 @@ section{scroll-margin-top:96px}
 .card{display:flex;flex-direction:column;min-width:0}
 .card-img{position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:var(--cream)}
 .card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s,transform .8s}
-.card-img img.alt{opacity:0}
+.card-img img.alt{opacity:0;object-fit:contain;background:#fff}
 .card:hover .card-img img.alt{opacity:1}
 .card:hover .card-img img{transform:scale(1.03)}
 .card-body{padding-top:14px;display:flex;flex-direction:column;gap:4px}
@@ -260,9 +260,9 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
         </div>
       </div>
       <div class="hero-collage">
-        <div class="tile t1"><img src="https://cdn.shopify.com/s/files/1/0777/8733/2779/files/NAM-00787_1.png?v=1784701391&width=900" alt="Marble pillar lamp with brass detailing"><span class="tag">Lighting</span></div>
-        <div class="tile t2"><img src="https://cdn.shopify.com/s/files/1/0777/8733/2779/files/NAM-00821_3_35427f48-5025-4ed3-aedf-1d8524b43c00.png?v=1784698360&width=700" alt="Four-horse rectangular tray"><span class="tag">Trays</span></div>
-        <div class="tile t3"><img src="https://cdn.shopify.com/s/files/1/0777/8733/2779/files/NAM-00522_2_a5ccc836-9fcc-47e2-bb39-53e5a4ddce77.png?v=1784703184&width=700" alt="Palm candle holder on white marble base"><span class="tag">Candle holders</span></div>
+        <div class="tile t1"><img src="images/nam-00787-1.webp" alt="Marble pillar lamp with brass detailing"><span class="tag">Lighting</span></div>
+        <div class="tile t2"><img src="images/nam-00821-1.webp" alt="Four-horse rectangular tray"><span class="tag">Trays</span></div>
+        <div class="tile t3"><img src="images/nam-00522-1.webp" alt="Palm candle holder on white marble base"><span class="tag">Candle holders</span></div>
       </div>
     </div>
     <div class="hero-foot">
@@ -286,7 +286,7 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
     <div class="reveal">
       <p class="eyebrow">Our Saga</p>
       <h2>Four decades of <em>craft</em>, one careful piece at a time</h2>
-      <div class="saga-figure"><img src="https://cdn.shopify.com/s/files/1/0777/8733/2779/files/8782dd5f-8e77-403f-a30c-606b657cfe60.png?v=1782378299&width=1000" alt="Five-light candle stand with clear glass and brass rings"></div>
+      <div class="saga-figure"><img src="images/nam-00503-1.webp" alt="Five-light candle stand with clear glass and brass rings"></div>
     </div>
     <div class="saga-copy reveal">
       <p>Founded in 1981, Paragon Metal Industries began with a team of skilled artisans and a shared passion for bringing Indian craftsmanship to the world.</p>
@@ -337,7 +337,7 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
       <li><b>Careful packing</b><span>Packed to arrive as it left our floor, wherever it is headed.</span></li>
     </ol>
     <div class="craft-quote">
-      <div class="tile"><img src="https://cdn.shopify.com/s/files/1/0777/8733/2779/files/NAM-00463_2.png?v=1784702290&width=500" alt="Twig table lamp detail"></div>
+      <div class="tile"><img src="images/nam-00463-1.webp" alt="Twig table lamp detail"></div>
       <p>“Quality is a responsibility shared at every stage, with equal care for the details our clients see and those they may never notice.”</p>
     </div>
   </div>
@@ -346,8 +346,8 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
 <section id="drive" class="sec drive">
   <div class="frame drive-grid">
     <div class="drive-pics">
-      <div class="tile"><img src="https://cdn.shopify.com/s/files/1/0777/8733/2779/files/NAM-00617_8.png?v=1782378482&width=700" alt="Two-leaf brass floor lamp"></div>
-      <div class="tile"><img src="https://cdn.shopify.com/s/files/1/0777/8733/2779/files/NAM-00798.png?v=1784702533&width=700" alt="Leopard bookend on black marble glass"></div>
+      <div class="tile"><img src="images/nam-00818-1.webp" alt="Floor lamp with off-white shade"></div>
+      <div class="tile"><img src="images/nam-00798-1.webp" alt="Leopard bookend on black marble glass"></div>
     </div>
     <div>
       <p class="eyebrow">Our Drive</p>
@@ -417,40 +417,39 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
 
 <script>
 document.documentElement.classList.add('js');
-const CDN='https://cdn.shopify.com/s/files/1/0777/8733/2779/files/';
-const W='&width=700';
+const img=(sku,n)=>`images/${sku.toLowerCase()}-${n}.webp`;
 const products=[
-  ['Marble Pillar Lamp','NAM-00787','Lighting','NAM-00787_1.png?v=1784701391','NAM-00787_2.png?v=1784701390'],
-  ['Gold Table Lamp, Black Shade','NAM-00782','Lighting','NAM-00782_2_a24f69f0-2e29-47ff-bc1a-7ebc39da00f1.png?v=1784974748','NAM-00782_3_e29d7051-9ee0-403e-a73d-4932832c64a2.png?v=1784974748'],
-  ['Palm Tree Table Lamp','NAM-00473','Lighting','8a919cf3-2b12-4393-b814-da025c9bf110.png?v=1782379003','NAM-00473_8.png?v=1782378847'],
-  ['Camel Table Lamp, Round Shade','NAM-00471','Lighting','f6cd6f67-84b0-472c-a6db-377dc8615c5c.png?v=1782379039','NAM-00471_7.png?v=1782378887'],
-  ['Floor Lamp, Off-White Shade','NAM-00818','Lighting','NAM-00818-1_3.png?v=1784701330','NAM-00818-1_2.png?v=1784701331'],
-  ['Hammered Base Lamp','NAM-01077','Lighting','Picture14_1aec363a-2779-415b-94b4-eb508bb3757a.png?v=1783580672','NAM-01077.png?v=1784610791'],
-  ['Royal Red Lamp','NAM-01080','Lighting','Picture16.png?v=1783576552','NAM-01080.png?v=1784610641'],
-  ['Twig Table Lamp','NAM-00463','Lighting','NAM-00463_2.png?v=1784702290','NAM-00463_4.png?v=1784702290'],
-  ['Palm Hanging Lamp with Chain','NAM-00486','Lighting','f1f7e943-f3c6-4508-b18d-8308d10a02ef.png?v=1782378733','3f0b6731-6ff6-4805-9e83-f5e28cdcfa43.png?v=1782378733'],
-  ['Hanging Lamp, Large','NAM-00593','Lighting','d584c750-83e6-4553-8459-96250d0486f8.png?v=1782378679','99d8e3ab-4e0f-4058-b989-973b9faae4dc.png?v=1782378678'],
-  ['Study Lamp','NAM-00781','Lighting','335be2ad-0a0a-43fb-8dd4-37912833cb23.png?v=1782378552','1649c9be-b403-4215-a0db-2373a9d83142.png?v=1782378429'],
-  ['Green Ribbed Lamp','NAM-01082','Lighting','Picture4.png?v=1783576529','NAM-01082.png?v=1784610391'],
-  ['5-Light Candle Stand','NAM-00503','Candle holders','8782dd5f-8e77-403f-a30c-606b657cfe60.png?v=1782378299','d2e9dc3d-33d9-4375-8448-9433c0b0dfc9.png?v=1782378231'],
-  ['Palm Candle Holder, Marble Base','NAM-00522','Candle holders','NAM-00522_2_a5ccc836-9fcc-47e2-bb39-53e5a4ddce77.png?v=1784703184','NAM-00522_3_a38df04d-b7ba-41e3-8bd5-11feab5c3a0e.png?v=1784703183'],
-  ['Candle Holder with Glass & Ring','NAM-00638','Candle holders','e02437a7-9e11-49ba-851e-6e7bd7c1c78e.png?v=1782377814','NAM-00638_10.jpg?v=1782377730'],
-  ['Four-Horse Rectangular Tray','NAM-00821','Décor & trays','NAM-00821_3_35427f48-5025-4ed3-aedf-1d8524b43c00.png?v=1784698360','NAM-00821_2_4c67f00c-d0ee-45b1-aaba-9855d4501bba.png?v=1784698360'],
-  ['Oval Mirror Tray, Large','NAM-00553','Décor & trays','NAM-00553.png?v=1784699689','b69f6dfc-4937-4022-910f-031956358c0c.png?v=1782376221'],
-  ['Leopard Bookend, Black Marble Glass','NAM-00798','Décor & trays','144270aa-0db4-4b26-8362-6b5c28e42011.png?v=1782379248','NAM-00798.png?v=1784702533'],
-  ['Bookend on Glass Base','NAM-00799','Décor & trays','0e86378d-ebec-4031-97a4-a38cff68005d.png?v=1782379237','NAM-00799.png?v=1784702498'],
-  ['3-Tier Rack','NAM-00772','Décor & trays','Namak20214806.jpg?v=1782375825','Namak20214776.jpg?v=1782375825'],
-  ['Garland','NAM-01027','Décor & trays','ccfe80eb-db7d-4eba-9c12-b351ccbb02a2.png?v=1782373870','NAM-01027.png?v=1784610864'],
-  ['Organic Photo Frame','NAM-00783','Frames & clocks','4c3c2eca-08ea-4f62-9d4c-2f909f29badd.png?v=1782380610','f02b273d-8685-4bc9-96aa-94bbc39c097d.png?v=1782380505'],
-  ['Metal Photo Frame','NAM-00832','Frames & clocks','53841890-054d-4040-9a0e-943d836f4874.png?v=1782380570','5113de45-25cc-4a44-8366-0295c127d9b3.png?v=1782380482'],
-  ['Rectangular Table Clock with Hook','NAM-00628','Frames & clocks','5607a1e2-3487-4e55-b1fe-1d33193b33da.png?v=1782381701','NAM-00628_3.png?v=1782381522']
+  ['Marble Pillar Lamp','NAM-00787','Lighting'],
+  ['Gold Table Lamp, Black Shade','NAM-00782','Lighting'],
+  ['Palm Tree Table Lamp','NAM-00473','Lighting'],
+  ['Camel Table Lamp, Round Shade','NAM-00471','Lighting'],
+  ['Floor Lamp, Off-White Shade','NAM-00818','Lighting'],
+  ['Hammered Base Lamp','NAM-01077','Lighting'],
+  ['Royal Red Lamp','NAM-01080','Lighting'],
+  ['Twig Table Lamp','NAM-00463','Lighting'],
+  ['Palm Hanging Lamp with Chain','NAM-00486','Lighting'],
+  ['Hanging Lamp, Large','NAM-00593','Lighting'],
+  ['Study Lamp','NAM-00781','Lighting'],
+  ['Green Ribbed Lamp','NAM-01082','Lighting'],
+  ['5-Light Candle Stand','NAM-00503','Candle holders'],
+  ['Palm Candle Holder, Marble Base','NAM-00522','Candle holders'],
+  ['Candle Holder with Glass & Ring','NAM-00638','Candle holders'],
+  ['Four-Horse Rectangular Tray','NAM-00821','Décor & trays'],
+  ['Oval Mirror Tray, Large','NAM-00553','Décor & trays'],
+  ['Leopard Bookend, Black Marble Glass','NAM-00798','Décor & trays'],
+  ['Bookend on Glass Base','NAM-00799','Décor & trays'],
+  ['3-Tier Rack','NAM-00772','Décor & trays'],
+  ['Garland','NAM-01027','Décor & trays'],
+  ['Organic Photo Frame','NAM-00783','Frames & clocks'],
+  ['Metal Photo Frame','NAM-00832','Frames & clocks'],
+  ['Rectangular Table Clock with Hook','NAM-00628','Frames & clocks']
 ];
 const grid=document.getElementById('grid');
-grid.innerHTML=products.map(([n,sku,cat,a,b])=>`
+grid.innerHTML=products.map(([n,sku,cat])=>`
   <article class="card" data-cat="${cat}">
     <div class="card-img">
-      <img src="${CDN+a+W}" alt="${n}" loading="lazy">
-      <img class="alt" src="${CDN+b+W}" alt="" loading="lazy">
+      <img src="${img(sku,1)}" alt="${n}" loading="lazy" decoding="async">
+      <img class="alt" src="${img(sku,2)}" alt="" loading="lazy" decoding="async">
     </div>
     <div class="card-body">
       <span class="card-sku">${sku}</span>
