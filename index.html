@@ -71,7 +71,7 @@ h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.02;margin:0;te
 .hero{background:var(--ink);color:var(--cream);padding-block:140px 72px;position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 78% 40%,rgba(169,129,63,.28),transparent 70%);pointer-events:none}
 .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,5vw,72px);align-items:end;position:relative;z-index:1}
-.hero h1{font-size:clamp(50px,7.6vw,112px);font-weight:400}
+.hero h1{font-size:clamp(40px,11vw,64px);font-weight:400}
 .hero h1 em{font-style:italic;color:#E7C99A}
 .hero-lede{max-width:430px;color:rgba(248,241,231,.8);margin:28px 0 32px;font-size:17px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
@@ -86,6 +86,19 @@ h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.02;margin:0;te
 @media (max-width:900px){
   .hero{padding-top:120px}
   .hero-grid{grid-template-columns:1fr}
+}
+/* Desktop: the whole hero fits the first screen, sized from viewport height */
+@media (min-width:901px){
+  .hero{min-height:100svh;display:flex;flex-direction:column;padding-block:104px 26px}
+  .hero>.frame{flex:1;width:100%;display:flex;flex-direction:column}
+  .hero-grid{flex:1;align-items:center}
+  .hero h1{font-size:clamp(38px,min(5vw,8.4vh),80px)}
+  .hero .eyebrow{margin-bottom:14px}
+  .hero-lede{margin:clamp(14px,2.4vh,24px) 0 clamp(16px,2.8vh,28px);font-size:16px;line-height:1.55}
+  .hero-collage{height:clamp(300px,58vh,560px);grid-template-rows:1fr 1fr;justify-self:end;width:min(100%,560px)}
+  .hero-collage .tile{aspect-ratio:auto;height:100%;min-height:0}
+  .hero-foot{margin-top:clamp(16px,3vh,32px);padding-top:16px}
+  .hero-foot b{font-size:24px}
 }
 
 /* ---------- Marquee ---------- */
