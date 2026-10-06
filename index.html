@@ -249,8 +249,8 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
 .foot-bot a{text-decoration:none}
 .foot-bot a:hover{color:var(--cream)}
 .foot-credit{margin:22px 0 0;padding-top:16px;border-top:1px solid rgba(248,241,231,.1);text-align:center;font-size:12.5px;letter-spacing:.04em;color:rgba(248,241,231,.55)}
-.foot-credit a{color:rgba(248,241,231,.85);text-decoration:none;border-bottom:1px solid rgba(248,241,231,.3)}
-.foot-credit a:hover{color:var(--cream);border-color:var(--cream)}
+.foot-credit a{color:#E7C99A;font-weight:600;text-decoration:none;transition:opacity .2s}
+.foot-credit a:hover{opacity:.8}
 
 /* Reveal: visible at rest, gentle lift when JS marks it */
 .reveal{transition:transform .9s cubic-bezier(.2,.7,.2,1),opacity .9s}
@@ -406,7 +406,7 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
         <div class="place"><h3>Email</h3><p><a href="mailto:jimmy@paragonmetal.com">jimmy@paragonmetal.com</a><br>www.paragonmetal.com</p></div>
       </div>
     </div>
-    <form class="form" id="enquiry" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+    <form class="form" id="enquiry" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" novalidate>
       <input type="hidden" name="form-name" value="enquiry">
       <input type="hidden" name="subject" value="New website enquiry – Paragon Metal Industries">
       <p class="hp" aria-hidden="true"><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
@@ -446,7 +446,7 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
       <span>© <span id="yr">2026</span> Paragon Metal Industries. All rights reserved.</span>
       <nav aria-label="Footer"><a href="#saga">Our Saga</a><a href="#collections">Collections</a><a href="#craft">Craft</a><a href="#connect">Connect</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a></nav>
     </div>
-    <p class="foot-credit">Designed &amp; developed by <a href="https://scalingsocials.com" target="_blank" rel="noopener">Scaling Socials</a></p>
+    <p class="foot-credit">Designed &amp; Developed by <a href="https://scalingsocials.com" target="_blank" rel="noopener">Scaling Socials</a></p>
   </div>
 </footer>
 
@@ -529,7 +529,8 @@ document.getElementById('enquiry').addEventListener('submit',async e=>{
     const res=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()});
     if(!res.ok)throw new Error(res.status);
     f.reset();msg.classList.add('ok');
-    msg.textContent='Thank you. Your enquiry has been sent and our team will get back to you shortly.';
+    msg.textContent='Thank you. Your enquiry has been sent.';
+    window.location.href='thank-you.html';
   }catch(err){
     const body=`Name: ${f['f-name'].value}\nCompany: ${f['f-company'].value}\nEmail: ${f['f-email'].value}\nCountry: ${f['f-country'].value}\n\n${f['f-msg'].value}`;
     window.location.href=`mailto:jimmy@paragonmetal.com?subject=${encodeURIComponent(f['f-topic'].value+' – Paragon website')}&body=${encodeURIComponent(body)}`;
