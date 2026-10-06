@@ -583,17 +583,15 @@ if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: red
   const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.remove('pre');io.unobserve(en.target)}}),{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>{if(el.getBoundingClientRect().top>innerHeight){el.classList.add('pre');io.observe(el)}});
 }
-/* rotating photos (hero tiles, quote circle): crossfade to the next one; later photos load just before they are needed */
-if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
-  document.querySelectorAll('.cycle').forEach(box=>{
-    const imgs=[...box.querySelectorAll('img')];if(imgs.length<2)return;
-    let i=0;const load=m=>{if(!m.getAttribute('src')&&m.dataset.src)m.src=m.dataset.src};
-    const step=()=>{const n=(i+1)%imgs.length,next=imgs[n];load(next);
-      if(!next.complete||!next.naturalWidth)return;            /* not ready yet: try again next tick */
-      imgs.forEach(m=>m.classList.remove('prev'));imgs[i].classList.replace('on','prev');next.classList.add('on');i=n;load(imgs[(i+1)%imgs.length])};
-    setTimeout(()=>{load(imgs[1]);setInterval(step,+box.dataset.every||4000)},+box.dataset.delay||0);
-  });
-}
+/* rotating photos (hero tiles, quote circle): switch to the next one every few seconds; later photos load just before they are needed */
+document.querySelectorAll('.cycle').forEach(box=>{
+  const imgs=[...box.querySelectorAll('img')];if(imgs.length<2)return;
+  let i=0;const load=m=>{if(!m.getAttribute('src')&&m.dataset.src)m.src=m.dataset.src};
+  const step=()=>{const n=(i+1)%imgs.length,next=imgs[n];load(next);
+    if(!next.complete||!next.naturalWidth)return;            /* not ready yet: try again next tick */
+    imgs.forEach(m=>m.classList.remove('prev'));imgs[i].classList.remove('on');imgs[i].classList.add('prev');next.classList.add('on');i=n;load(imgs[(i+1)%imgs.length])};
+  setTimeout(()=>{load(imgs[1]);setInterval(step,+box.dataset.every||4000)},+box.dataset.delay||0);
+});
 document.getElementById('yr').textContent=new Date().getFullYear();
 </script>
 </body>
