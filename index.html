@@ -184,9 +184,10 @@ section{scroll-margin-top:104px}
 .steps span{font-size:14px;color:var(--muted);line-height:1.5}
 .craft-quote{margin-top:56px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
 .craft-quote .tile{width:200px;aspect-ratio:1;border-radius:50%}
-.craft-quote .tile img{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
-.craft-quote .tile img.prev{opacity:1;z-index:1;transition:none}
-.craft-quote .tile img.on{opacity:1;z-index:2}
+.cycle img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
+.cycle img.prev{opacity:1;z-index:1;transition:none}
+.cycle img.on{opacity:1;z-index:2}
+.cycle .tag{z-index:3}
 .craft-quote p{font-family:var(--display);font-size:clamp(24px,2.6vw,34px);line-height:1.28;margin:0;max-width:30ch}
 @media (max-width:1000px){.steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.steps li:last-child{grid-column:span 2}
   .steps li:not(:last-child)::after{right:-20px}
@@ -255,6 +256,45 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
 /* Reveal: visible at rest, gentle lift when JS marks it */
 .reveal{transition:transform .9s cubic-bezier(.2,.7,.2,1),opacity .9s}
 .js .reveal.pre{transform:translateY(22px)}
+/* ---------- Large screens ---------- */
+@media (min-width:1600px){
+  :root{--frame:1440px}
+  body{font-size:17px}
+  .hero h1{font-size:clamp(38px,min(5vw,9vh),104px)}
+  .hero-lede{font-size:18px;max-width:500px}
+  .hero-collage{height:clamp(300px,60vh,720px);width:min(100%,680px);gap:16px}
+  .hero-foot{font-size:14px}.hero-foot b{font-size:30px}
+  .sec-head h2,.saga h2,.craft-top h2,.drive h2,.contact h2{font-size:88px}
+  .nav ul a{font-size:15px;padding-inline:16px}
+  .btn{font-size:15px;padding:15px 28px}.nav .btn{padding:13px 24px}
+  .card h3{font-size:25px}
+  .steps b{font-size:16px}.steps span{font-size:15px}
+  .craft-quote .tile{width:240px}
+}
+@media (min-width:2000px){
+  :root{--frame:1680px}
+  body{font-size:18.5px}
+  .hero{padding-top:132px}
+  .hero h1{font-size:clamp(38px,min(5vw,9.6vh),132px)}
+  .hero-lede{font-size:20px;max-width:580px}
+  .hero-collage{height:clamp(300px,62vh,900px);width:min(100%,800px);gap:18px}
+  .tile .tag{font-size:13px;padding:8px 13px;left:16px;bottom:16px}
+  .hero-foot{font-size:15.5px}.hero-foot b{font-size:36px}
+  .eyebrow{font-size:14px}
+  .sec-head h2,.saga h2,.craft-top h2,.drive h2,.contact h2{font-size:104px}
+  .nav .logo .mark{height:66px}.nav .logo .word{height:26px}
+  .nav ul a{font-size:17px;padding-inline:20px}
+  .btn{font-size:16.5px;padding:17px 32px}.nav .btn{padding:15px 28px}
+  .card h3{font-size:28px}.card-sku{font-size:12.5px}.card-cat,.card a.enq{font-size:15px}
+  .filters button{font-size:16px;padding:13px 22px}
+  .steps li::before{font-size:46px}.steps b{font-size:18px}.steps span{font-size:16px}
+  .craft-quote .tile{width:280px}.craft-quote p{font-size:42px;max-width:32ch}
+  .marquee-track{font-size:30px}
+  .field label{font-size:15px}.field input,.field select,.field textarea{font-size:17px;padding:15px 16px}
+  .place h3{font-size:13.5px}.place{grid-template-columns:140px 1fr}
+  .foot-bot{font-size:15px}.foot-top p{font-size:16px;max-width:400px}.foot-credit{font-size:14px}
+  .facts span,.sec-head p{font-size:16px}
+}
 </style>
 </head>
 <body>
@@ -291,9 +331,9 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
         </div>
       </div>
       <div class="hero-collage">
-        <div class="tile t1"><img src="images/nam-00787-1.webp" alt="Marble pillar lamp with brass detailing"><span class="tag">Lighting</span></div>
-        <div class="tile t2"><img src="images/nam-00821-1.webp" alt="Four-horse rectangular tray"><span class="tag">Trays</span></div>
-        <div class="tile t3"><img src="images/nam-00503-1.webp" alt="Five-light candle stand with clear glass and brass rings"><span class="tag">Candle holders</span></div>
+        <div class="tile t1 cycle" data-every="4500" data-delay="0"><img class="on" src="images/nam-00787-1.webp" alt="Marble pillar lamp with brass detailing"><img data-src="images/nam-00463-1.webp" alt="Twig table lamp beside a bed"><img data-src="images/nam-00782-1.webp" alt="Gold table lamp with black shade"><img data-src="images/nam-01080-1.webp" alt="Royal red lamp in a study"><img data-src="images/nam-00486-1.webp" alt="Palm hanging lamp over a table"><span class="tag">Lighting</span></div>
+        <div class="tile t2 cycle" data-every="4500" data-delay="1500"><img class="on" src="images/nam-00821-1.webp" alt="Four-horse rectangular tray"><img data-src="images/nam-00553-1.webp" alt="Oval mirror tray on a coffee table"><img data-src="images/nam-00798-1.webp" alt="Leopard bookend on black marble glass"><img data-src="images/nam-00799-1.webp" alt="Brass bookends on a console"><span class="tag">Décor &amp; trays</span></div>
+        <div class="tile t3 cycle" data-every="4500" data-delay="3000"><img class="on" src="images/nam-00503-1.webp" alt="Five-light candle stand with clear glass and brass rings"><img data-src="images/nam-00522-1.webp" alt="Palm candle holder on white marble base"><img data-src="images/nam-00638-1.webp" alt="Candle holder with clear glass and ring"><span class="tag">Candle holders</span></div>
       </div>
     </div>
     <div class="hero-foot">
@@ -369,7 +409,7 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
       <li><b>Careful packing</b><span>Packed to arrive as it left our floor, wherever it is headed.</span></li>
     </ol>
     <div class="craft-quote">
-      <div class="tile" id="craftCycle"><img class="on" src="images/craft-1.webp" alt="Gloved hands wrapping a brass vase for packing"><img src="images/craft-2.webp" alt="Gloved hands assembling a brass and glass candle holder" loading="lazy"><img src="images/craft-3.webp" alt="Gloved hands inspecting the finish of a brass bowl" loading="lazy"></div>
+      <div class="tile cycle" data-every="3500"><img class="on" src="images/craft-1.webp" alt="Gloved hands wrapping a brass vase for packing"><img data-src="images/craft-2.webp" alt="Gloved hands assembling a brass and glass candle holder"><img data-src="images/craft-3.webp" alt="Gloved hands inspecting the finish of a brass bowl"></div>
       <p>“Quality is a responsibility shared at every stage, with equal care for the details our clients see and those they may never notice.”</p>
     </div>
   </div>
@@ -543,9 +583,17 @@ if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: red
   const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.remove('pre');io.unobserve(en.target)}}),{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>{if(el.getBoundingClientRect().top>innerHeight){el.classList.add('pre');io.observe(el)}});
 }
-/* craft circle: fade to the next photo every few seconds */
-(()=>{const imgs=[...document.querySelectorAll('#craftCycle img')];if(imgs.length<2)return;let i=0;
-  setInterval(()=>{imgs.forEach(m=>m.classList.remove('prev'));imgs[i].classList.replace('on','prev');i=(i+1)%imgs.length;imgs[i].classList.add('on')},3500);})();
+/* rotating photos (hero tiles, quote circle): crossfade to the next one; later photos load just before they are needed */
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  document.querySelectorAll('.cycle').forEach(box=>{
+    const imgs=[...box.querySelectorAll('img')];if(imgs.length<2)return;
+    let i=0;const load=m=>{if(!m.getAttribute('src')&&m.dataset.src)m.src=m.dataset.src};
+    const step=()=>{const n=(i+1)%imgs.length,next=imgs[n];load(next);
+      if(!next.complete||!next.naturalWidth)return;            /* not ready yet: try again next tick */
+      imgs.forEach(m=>m.classList.remove('prev'));imgs[i].classList.replace('on','prev');next.classList.add('on');i=n;load(imgs[(i+1)%imgs.length])};
+    setTimeout(()=>{load(imgs[1]);setInterval(step,+box.dataset.every||4000)},+box.dataset.delay||0);
+  });
+}
 document.getElementById('yr').textContent=new Date().getFullYear();
 </script>
 </body>
