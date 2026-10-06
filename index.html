@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Paragon Metal Industries</title>
-<meta name="description" content="Paragon Metal Industries, Moradabad. Manufacturer and exporter of brass home décor, lighting and interior accessories since 1981.">
+<meta name="description" content="Paragon Metal Industries, Moradabad. Manufacturer and exporter of brass home décor, lighting and interior accessories since the 1980s.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -50,8 +50,13 @@ h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.02;margin:0;te
 
 /* ---------- Nav ---------- */
 .nav-wrap{position:fixed;inset:0 0 auto 0;z-index:50;padding:calc(14px + env(safe-area-inset-top,0px)) var(--gutter) 0}
-.nav{max-width:var(--frame);margin-inline:auto;background:var(--oxblood-deep);color:var(--cream);border-radius:var(--radius);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 12px 10px 26px;box-shadow:0 10px 30px -12px rgba(47,35,33,.45)}
-.nav .logo img{height:34px;width:auto}
+.nav{max-width:var(--frame);margin-inline:auto;background:var(--oxblood-deep);color:var(--cream);border-radius:var(--radius);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:7px 12px 7px 20px;box-shadow:0 10px 30px -12px rgba(47,35,33,.45)}
+.logo{display:inline-flex;align-items:center;gap:12px;text-decoration:none}
+.logo img{width:auto;display:block}
+.nav .logo .mark{height:56px}
+.nav .logo .word{height:22px}
+@media (max-width:520px){.nav .logo{gap:9px}.nav .logo .mark{height:46px}.nav .logo .word{height:15px}}
+@media (min-width:901px) and (max-width:1120px){.nav .logo .word{height:17px}.nav ul a{padding-inline:10px}}
 .nav ul{list-style:none;margin:0;padding:0;display:flex;gap:4px}
 .nav ul a{display:block;padding:9px 14px;border-radius:var(--radius);text-decoration:none;font-size:14px;letter-spacing:.02em;opacity:.88;transition:background .2s,opacity .2s}
 .nav ul a:hover{background:rgba(248,241,231,.1);opacity:1}
@@ -89,7 +94,7 @@ h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.02;margin:0;te
 }
 /* Desktop: the whole hero fits the first screen, sized from viewport height */
 @media (min-width:901px){
-  .hero{min-height:100svh;display:flex;flex-direction:column;padding-block:104px 26px}
+  .hero{min-height:100svh;display:flex;flex-direction:column;padding-block:116px 26px}
   .hero>.frame{flex:1;width:100%;display:flex;flex-direction:column}
   .hero-grid{flex:1;align-items:center}
   .hero h1{font-size:clamp(38px,min(5vw,8.4vh),80px)}
@@ -109,7 +114,7 @@ h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.02;margin:0;te
 @keyframes slide{to{transform:translateX(-50%)}}
 
 /* ---------- Sections ---------- */
-section{scroll-margin-top:96px}
+section{scroll-margin-top:104px}
 .sec{padding-block:clamp(72px,10vw,128px)}
 .sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
 .sec-head h2{font-size:clamp(40px,5.6vw,76px)}
@@ -119,8 +124,9 @@ section{scroll-margin-top:96px}
 .saga{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,6vw,96px);align-items:start}
 .saga h2{font-size:clamp(40px,5.6vw,76px)}
 .saga h2 em{font-style:italic;color:var(--oxblood)}
-.saga-figure{margin-top:36px;border-radius:20px;overflow:hidden;background:var(--paper);aspect-ratio:4/3.4}
-.saga-figure img{width:100%;height:100%;object-fit:cover}
+.saga-figure{margin-top:36px;position:relative;padding:0 0 18% 0}
+.saga-figure img{display:block;width:86%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:20px;background:var(--paper)}
+.saga-figure img+img{position:absolute;right:0;bottom:0;width:56%;border:8px solid var(--cream);border-radius:26px;box-shadow:0 18px 40px -22px rgba(47,35,33,.5)}
 .saga-copy{min-width:0}
 .saga-copy p{margin:0 0 20px;max-width:62ch;color:var(--cocoa)}
 .saga-copy p:first-child{font-family:var(--display);font-size:clamp(24px,2.4vw,30px);line-height:1.3;color:var(--ink)}
@@ -169,6 +175,9 @@ section{scroll-margin-top:96px}
 .steps span{font-size:14px;color:var(--muted);line-height:1.5}
 .craft-quote{margin-top:56px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
 .craft-quote .tile{width:200px;aspect-ratio:1;border-radius:50%}
+.craft-quote .tile img{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
+.craft-quote .tile img.prev{opacity:1;z-index:1;transition:none}
+.craft-quote .tile img.on{opacity:1;z-index:2}
 .craft-quote p{font-family:var(--display);font-size:clamp(24px,2.6vw,34px);line-height:1.28;margin:0;max-width:30ch}
 @media (max-width:1000px){.steps{grid-template-columns:repeat(2,1fr)}.steps li:last-child{grid-column:span 2}}
 @media (max-width:900px){.craft-top{grid-template-columns:1fr}}
@@ -182,9 +191,9 @@ section{scroll-margin-top:96px}
 .drive h2 em{font-style:italic;color:#E7C99A}
 .drive p{color:rgba(248,241,231,.78);max-width:58ch;margin:0 0 18px}
 .drive .lead{font-family:var(--display);font-size:clamp(24px,2.4vw,30px);line-height:1.3;color:var(--cream)}
-.drive-pics{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.drive-pics .tile{aspect-ratio:3/4}
-.drive-pics .tile:first-child{border-radius:200px 200px 20px 20px;margin-top:48px}
+.drive-pics{display:flex;justify-content:center}
+.drive-pics .tile{width:min(100%,460px);aspect-ratio:5/6;border-radius:240px 240px 20px 20px}
+.drive-pics .tile img{object-position:50% 30%}
 .sign{display:flex;align-items:center;gap:14px;margin-top:28px;font-size:14px;color:rgba(248,241,231,.7)}
 .sign b{font-family:var(--display);font-size:28px;font-weight:500;font-style:italic;color:var(--cream)}
 @media (max-width:900px){.drive-grid{grid-template-columns:1fr}}
@@ -214,8 +223,11 @@ section{scroll-margin-top:96px}
 
 /* Footer */
 footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc(28px + env(safe-area-inset-bottom,0px))}
-.foot-top{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(248,241,231,.16)}
-.foot-top img{width:min(520px,100%);height:auto}
+.foot-top{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(248,241,231,.16)}
+.foot-top .logo{gap:20px;min-width:0}
+.foot-top .logo .mark{height:96px}
+.foot-top .logo .word{height:32px}
+@media (max-width:520px){.foot-top .logo{gap:14px}.foot-top .logo .mark{height:68px}.foot-top .logo .word{height:21px}}
 .foot-top p{margin:0;max-width:340px;color:rgba(248,241,231,.72);font-size:14px}
 .foot-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:24px;font-size:13px;color:rgba(248,241,231,.62)}
 .foot-bot nav{display:flex;gap:20px;flex-wrap:wrap}
@@ -231,7 +243,7 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
 
 <div class="nav-wrap">
   <nav class="nav" id="nav" aria-label="Main">
-    <a href="#top" class="logo" aria-label="Paragon home"><img src="logo-cream.png" alt="Paragon" width="440" height="155"></a>
+    <a href="#top" class="logo" aria-label="Paragon Metal Industries home"><img class="mark" src="logo-mark-cream.png" alt="" width="230" height="240"><img class="word" src="logo-wordmark-cream.png" alt="Paragon Metal Industries" width="1160" height="120"></a>
     <ul>
       <li><a href="#saga">Our Saga</a></li>
       <li><a href="#collections">Collections</a></li>
@@ -250,7 +262,7 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
   <div class="frame">
     <div class="hero-grid">
       <div>
-        <p class="eyebrow" style="color:#E7C99A">Moradabad · Since 1981</p>
+        <p class="eyebrow" style="color:#E7C99A">Moradabad · Since the 1980s</p>
         <h1>Metal, shaped <em>by hand</em> for homes the world over</h1>
         <p class="hero-lede">Paragon Metal Industries manufactures and exports home décor, lighting and interior accessories, where four decades of Moradabad brass craft meet contemporary design.</p>
         <div class="hero-actions">
@@ -262,11 +274,11 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
       <div class="hero-collage">
         <div class="tile t1"><img src="images/nam-00787-1.webp" alt="Marble pillar lamp with brass detailing"><span class="tag">Lighting</span></div>
         <div class="tile t2"><img src="images/nam-00821-1.webp" alt="Four-horse rectangular tray"><span class="tag">Trays</span></div>
-        <div class="tile t3"><img src="images/nam-00522-1.webp" alt="Palm candle holder on white marble base"><span class="tag">Candle holders</span></div>
+        <div class="tile t3"><img src="images/nam-00503-1.webp" alt="Five-light candle stand with clear glass and brass rings"><span class="tag">Candle holders</span></div>
       </div>
     </div>
     <div class="hero-foot">
-      <div><b>1981</b>Founded in Moradabad</div>
+      <div><b>1980s</b>Founded in Moradabad</div>
       <div><b>3</b>Office, factory &amp; showroom</div>
       <div><b>Export</b>Home décor, lighting, accessories</div>
     </div>
@@ -286,15 +298,15 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
     <div class="reveal">
       <p class="eyebrow">Our Saga</p>
       <h2>Four decades of <em>craft</em>, one careful piece at a time</h2>
-      <div class="saga-figure"><img src="images/nam-00503-1.webp" alt="Five-light candle stand with clear glass and brass rings"></div>
+      <div class="saga-figure"><img src="images/saga-1.webp" alt="Artisan polishing a hammered brass vase at the workbench" width="1100" height="825" loading="lazy"><img src="images/saga-2.webp" alt="Artisan chasing a pattern into a brass tray by hand" width="1100" height="825" loading="lazy"></div>
     </div>
     <div class="saga-copy reveal">
-      <p>Founded in 1981, Paragon Metal Industries began with a team of skilled artisans and a shared passion for bringing Indian craftsmanship to the world.</p>
+      <p>Founded in the 1980s, Paragon Metal Industries began with a team of skilled artisans and a shared passion for bringing Indian craftsmanship to the world.</p>
       <p>From our roots in brass handicrafts, we have grown into a manufacturer and exporter of home décor, lighting and interior accessories. Our collections bring together traditional skills and contemporary design, with thoughtful attention to materials, finishes and the smallest details.</p>
       <p>Over four decades, our journey has been shaped by the dedication of our people and the trust of our clients. A commitment to quality, careful packaging and timely delivery remains at the heart of every relationship we build.</p>
       <p>Today, we continue to create with the same care and conviction that inspired our beginnings, honouring our craft while evolving with the homes and lifestyles of a changing world.</p>
       <div class="facts">
-        <div><b>1981</b><span>Year our workshop opened</span></div>
+        <div><b>1980s</b><span>The decade our workshop opened</span></div>
         <div><b>40+</b><span>Years of brass craft</span></div>
         <div><b>3</b><span>Product families: décor, lighting, accessories</span></div>
       </div>
@@ -325,7 +337,7 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
         <h2>Where metal becomes beauty and purpose</h2>
       </div>
       <div>
-        <p>Since 1981, Paragon’s story has been closely woven with the craft traditions of Moradabad. This heritage shapes who we are: the materials we work with, the skills we value and the care we bring to every collection.</p>
+        <p>Since the 1980s, Paragon’s story has been closely woven with the craft traditions of Moradabad. This heritage shapes who we are: the materials we work with, the skills we value and the care we bring to every collection.</p>
         <p>Behind our pieces are skilled artisans whose knowledge and experience turn metal into objects of beauty and purpose. Their hands shape the forms, refine the textures and bring out the details that give Paragon’s creations their distinctive character.</p>
       </div>
     </div>
@@ -337,7 +349,7 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
       <li><b>Careful packing</b><span>Packed to arrive as it left our floor, wherever it is headed.</span></li>
     </ol>
     <div class="craft-quote">
-      <div class="tile"><img src="images/nam-00463-1.webp" alt="Twig table lamp detail"></div>
+      <div class="tile" id="craftCycle"><img class="on" src="images/craft-1.webp" alt="Gloved hands wrapping a brass vase for packing"><img src="images/craft-2.webp" alt="Gloved hands assembling a brass and glass candle holder" loading="lazy"><img src="images/craft-3.webp" alt="Gloved hands inspecting the finish of a brass bowl" loading="lazy"></div>
       <p>“Quality is a responsibility shared at every stage, with equal care for the details our clients see and those they may never notice.”</p>
     </div>
   </div>
@@ -346,8 +358,7 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
 <section id="drive" class="sec drive">
   <div class="frame drive-grid">
     <div class="drive-pics">
-      <div class="tile"><img src="images/nam-00818-1.webp" alt="Floor lamp with off-white shade"></div>
-      <div class="tile"><img src="images/nam-00798-1.webp" alt="Leopard bookend on black marble glass"></div>
+      <div class="tile"><img src="images/our-drive.webp" alt="Portrait at the Paragon Metal Industries office" width="916" height="1100" loading="lazy"></div>
     </div>
     <div>
       <p class="eyebrow">Our Drive</p>
@@ -405,8 +416,8 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
 <footer>
   <div class="frame">
     <div class="foot-top">
-      <img src="logo-full-cream.png" alt="Paragon Metal Industries" width="900" height="152">
-      <p>Manufacturer and exporter of home décor, lighting and interior accessories. Moradabad, Uttar Pradesh, since 1981.</p>
+      <a href="#top" class="logo" aria-label="Paragon Metal Industries, back to top"><img class="mark" src="logo-mark-cream.png" alt="" width="230" height="240"><img class="word" src="logo-wordmark-cream.png" alt="Paragon Metal Industries" width="1160" height="120"></a>
+      <p>Manufacturer and exporter of home décor, lighting and interior accessories. Moradabad, Uttar Pradesh, since the 1980s.</p>
     </div>
     <div class="foot-bot">
       <span>© <span id="yr">2026</span> Paragon Metal Industries. All rights reserved.</span>
@@ -497,6 +508,9 @@ if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: red
   const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.remove('pre');io.unobserve(en.target)}}),{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>{if(el.getBoundingClientRect().top>innerHeight){el.classList.add('pre');io.observe(el)}});
 }
+/* craft circle: fade to the next photo every few seconds */
+(()=>{const imgs=[...document.querySelectorAll('#craftCycle img')];if(imgs.length<2)return;let i=0;
+  setInterval(()=>{imgs.forEach(m=>m.classList.remove('prev'));imgs[i].classList.replace('on','prev');i=(i+1)%imgs.length;imgs[i].classList.add('on')},3500);})();
 document.getElementById('yr').textContent=new Date().getFullYear();
 </script>
 </body>
