@@ -230,6 +230,9 @@ section{scroll-margin-top:104px}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--oxblood);box-shadow:0 0 0 3px rgba(121,35,23,.12)}
 .form .btn{justify-self:start}
 .form-msg{font-size:14px;color:var(--oxblood);min-height:1.2em;margin:0}
+.form-msg.ok{color:var(--ink);background:var(--peach);border-radius:12px;padding:12px 14px}
+.form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form .btn[disabled]{opacity:.6;cursor:progress}
 @media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
 @media (max-width:520px){.form .row{grid-template-columns:1fr}.place{grid-template-columns:1fr;gap:4px}}
 
@@ -245,6 +248,9 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
 .foot-bot nav{display:flex;gap:10px 20px;flex-wrap:wrap}
 .foot-bot a{text-decoration:none}
 .foot-bot a:hover{color:var(--cream)}
+.foot-credit{margin:22px 0 0;padding-top:16px;border-top:1px solid rgba(248,241,231,.1);text-align:center;font-size:12.5px;letter-spacing:.04em;color:rgba(248,241,231,.55)}
+.foot-credit a{color:rgba(248,241,231,.85);text-decoration:none;border-bottom:1px solid rgba(248,241,231,.3)}
+.foot-credit a:hover{color:var(--cream);border-color:var(--cream)}
 
 /* Reveal: visible at rest, gentle lift when JS marks it */
 .reveal{transition:transform .9s cubic-bezier(.2,.7,.2,1),opacity .9s}
@@ -400,7 +406,10 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
         <div class="place"><h3>Email</h3><p><a href="mailto:jimmy@paragonmetal.com">jimmy@paragonmetal.com</a><br>www.paragonmetal.com</p></div>
       </div>
     </div>
-    <form class="form" id="enquiry" novalidate>
+    <form class="form" id="enquiry" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+      <input type="hidden" name="form-name" value="enquiry">
+      <input type="hidden" name="subject" value="New website enquiry – Paragon Metal Industries">
+      <p class="hp" aria-hidden="true"><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
       <h3>Send an enquiry</h3>
       <div class="row">
         <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
@@ -419,7 +428,7 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
         </select>
       </div>
       <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="message" placeholder="Products, quantities, finishes or timelines you have in mind"></textarea></div>
-      <button class="btn btn-primary" type="submit">Send enquiry
+      <button class="btn btn-primary" type="submit" id="f-send">Send enquiry
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
       <p class="form-msg" id="formMsg" role="status"></p>
     </form>
@@ -437,6 +446,7 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
       <span>© <span id="yr">2026</span> Paragon Metal Industries. All rights reserved.</span>
       <nav aria-label="Footer"><a href="#saga">Our Saga</a><a href="#collections">Collections</a><a href="#craft">Craft</a><a href="#connect">Connect</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a></nav>
     </div>
+    <p class="foot-credit">Designed &amp; developed by <a href="https://scalingsocials.com" target="_blank" rel="noopener">Scaling Socials</a></p>
   </div>
 </footer>
 
@@ -508,14 +518,23 @@ const setMenu=o=>{nav.classList.toggle('open',o);mb.setAttribute('aria-expanded'
 mb.addEventListener('click',()=>setMenu(!nav.classList.contains('open')));
 nav.querySelectorAll('ul a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
 
-/* enquiry form: opens the visitor's email app with the enquiry filled in */
-document.getElementById('enquiry').addEventListener('submit',e=>{
+/* enquiry form: posts to Netlify Forms; if that isn't available, falls back to the visitor's email app */
+document.getElementById('enquiry').addEventListener('submit',async e=>{
   e.preventDefault();
-  const f=e.target,msg=document.getElementById('formMsg');
-  if(!f['f-name'].value.trim()||!f['f-email'].checkValidity()||!f['f-email'].value){msg.textContent='Please add your name and a valid email address.';return}
-  const body=`Name: ${f['f-name'].value}\nCompany: ${f['f-company'].value}\nEmail: ${f['f-email'].value}\nCountry: ${f['f-country'].value}\n\n${f['f-msg'].value}`;
-  window.location.href=`mailto:jimmy@paragonmetal.com?subject=${encodeURIComponent(f['f-topic'].value+' – Paragon website')}&body=${encodeURIComponent(body)}`;
-  msg.textContent='Your email app should open with the enquiry ready to send. You can also write to jimmy@paragonmetal.com directly.';
+  const f=e.target,msg=document.getElementById('formMsg'),btn=document.getElementById('f-send');
+  msg.classList.remove('ok');
+  if(!f['f-name'].value.trim()||!f['f-email'].value||!f['f-email'].checkValidity()){msg.textContent='Please add your name and a valid email address.';return}
+  btn.disabled=true;msg.textContent='Sending…';
+  try{
+    const res=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()});
+    if(!res.ok)throw new Error(res.status);
+    f.reset();msg.classList.add('ok');
+    msg.textContent='Thank you. Your enquiry has been sent and our team will get back to you shortly.';
+  }catch(err){
+    const body=`Name: ${f['f-name'].value}\nCompany: ${f['f-company'].value}\nEmail: ${f['f-email'].value}\nCountry: ${f['f-country'].value}\n\n${f['f-msg'].value}`;
+    window.location.href=`mailto:jimmy@paragonmetal.com?subject=${encodeURIComponent(f['f-topic'].value+' – Paragon website')}&body=${encodeURIComponent(body)}`;
+    msg.textContent='We could not send the form just now, so your email app should open with the enquiry ready to send. You can also write to jimmy@paragonmetal.com directly.';
+  }finally{btn.disabled=false}
 });
 
 /* gentle reveal for sections below the fold only */
