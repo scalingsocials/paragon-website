@@ -221,6 +221,12 @@ section{scroll-margin-top:104px}
 .place p{margin:0;color:var(--cocoa);line-height:1.6}
 .place a{text-decoration:none;border-bottom:1px solid var(--line)}
 .place a:hover{border-color:var(--oxblood)}
+.locator{margin-top:28px}
+.locator-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.locator-head h3{font-family:var(--body);font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--oxblood)}
+.locator-head a{font-size:14px;font-weight:500;color:var(--oxblood);text-decoration:none}
+.locator-head a:hover{text-decoration:underline;text-underline-offset:3px}
+.locator iframe{display:block;width:100%;aspect-ratio:16/10;min-height:260px;border:1px solid var(--line);border-radius:20px;background:var(--paper)}
 .form{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,3.4vw,40px);display:grid;gap:16px;min-width:0}
 .form h3{font-size:34px;margin-bottom:4px}
 .form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -439,11 +445,14 @@ footer{background:var(--oxblood-deep);color:var(--cream);padding-block:64px calc
       <h2>Let’s create something together</h2>
       <p class="contact-intro">For product enquiries, collection previews and business partnerships, we would be delighted to hear from you.</p>
       <div class="places">
-        <div class="place"><h3>Office</h3><p>3/C-140, Budhi Vihar, Avas Vikas Colony, Majhola<br>Delhi Road, Moradabad 244001<br>Uttar Pradesh, India</p></div>
         <div class="place"><h3>Factory</h3><p>Lakri Fazalpur, Mini Bypass Road<br>Moradabad 244001, Uttar Pradesh, India</p></div>
         <div class="place"><h3>Showroom</h3><p>A 06/02–06, India Expo Centre &amp; Mart<br>Greater Noida, Uttar Pradesh, India</p></div>
         <div class="place"><h3>Phone</h3><p><a href="tel:+915912484619">+91 591 2484619</a> / 3294584 / 3205907<br>Fax +91 591 2484618</p></div>
         <div class="place"><h3>Email</h3><p><a href="mailto:jimmy@paragonmetal.com">jimmy@paragonmetal.com</a><br>www.paragonmetal.com</p></div>
+      </div>
+      <div class="locator">
+        <div class="locator-head"><h3>Store locator</h3><a href="https://maps.app.goo.gl/qSZt1SixdnG5HTy98" target="_blank" rel="noopener">Open in Google Maps →</a></div>
+        <iframe title="Map showing Paragon Metal Industries, Lakri Fazalpur, Moradabad" src="https://www.google.com/maps?q=Paragon%20Metal%20Industries%2C%20Lakri%20Fazalpur%2C%20Moradabad&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
     </div>
     <form class="form" id="enquiry" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" novalidate>
